@@ -105,11 +105,20 @@ cross_icon.addEventListener("click",function(b){
 
 const delete_all = document.querySelector("#btnDeleteAll");
 
-delete_all.addEventListener("click",function(c){
+delete_all.addEventListener("click", function (c) {
+  if (
+    c.target.className ===
+    "btn btn-outline-primary btn-sm delete-all float-right"
+  ) {
+    // Remove all elements inside the task-list element
+    const taskList = document.getElementById("task-list");
+    while (taskList.firstChild) {
+      taskList.removeChild(taskList.firstChild);
+    }
 
-if(c.target.className === "btn btn-outline-primary btn-sm delete-all float-right")
-
-c.target.parentElement.nextElementSibling.remove();
+    // Clear storage when deleting all elements
+    sessionStorage.clear();
+  }
 });
 
 
